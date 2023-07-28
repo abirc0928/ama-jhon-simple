@@ -4,18 +4,19 @@ import { getDatabaseCart, removeFromDatabaseCart, clearLocalShoppingCart } from 
 import Cart from '../cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import './Review.css'
-import happyImage from '../../images/giphy.gif'
+import happyImage from '../../images/giphy.gif';
+import {useNavigate } from 'react-router-dom'
+import Shop from '../shop/Shop';
+
 
 const Review = (props) => {
     const [cart, setCart] = useState([]);
     const [orderPlaced, setOrderPlaced] = useState(false);
+    const navigate = useNavigate();
 
-    const handlePlaceOrder = () => {
-        console.log("order placed")
-        setCart([])
-        setOrderPlaced(true)
-        clearLocalShoppingCart();
-    }
+    // const handleProceedCheckout = () => {
+    //     navigate("/shipment")
+    // }
 
     useEffect(() => {
         const saveCart = getDatabaseCart()
@@ -50,14 +51,11 @@ const Review = (props) => {
                 {
                     thankyou
                 }
-                {/* {
-                    !cart.length && <h1>Your cart is empty. <a href="/shop">Keep shopping</a></h1>
-
-                } */}
+                
             </div>
             <div>
                 <Cart cart={cart}>
-                    <button onClick={() => handlePlaceOrder()} className='main-button'>Place order</button>
+                    <button className='main-button'>Proceed Checkout </button>
                 </Cart>
             </div>
         </div>

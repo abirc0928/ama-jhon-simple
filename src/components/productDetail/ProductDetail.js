@@ -9,7 +9,6 @@ const ProductDetail = (props) => {
     console.log(product)
     return (
         <div>
-            <h1> Your product details</h1>
             <Product showAddToCart={false}  products={product}></Product>
         </div>
     );
